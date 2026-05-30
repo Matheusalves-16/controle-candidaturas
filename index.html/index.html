@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Organiza Vagas</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+
+        input {
+            margin: 5px;
+            padding: 8px;
+        }
+
+        button {
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Controle de Candidaturas</h1>
+
+    <input type="text" id="vaga" placeholder="Nome da vaga">
+    <input type="date" id="dataEntrevista">
+    <input type="time" id="horaEntrevista">
+
+    <button onclick="adicionarVaga()">
+        Adicionar
+    </button>
+
+    <ul id="lista"></ul>
+
+    <script>
+
+        function adicionarVaga() {
+
+            let vaga = document.getElementById("vaga").value;
+            let data = document.getElementById("dataEntrevista").value;
+            let hora = document.getElementById("horaEntrevista").value;
+
+            if (vaga !== "" && data !== "" && hora !== "") {
+
+                let item = document.createElement("li");
+
+                item.innerHTML =
+                    `<strong>${vaga}</strong><br>
+                     Data: ${data}<br>
+                     Horário: ${hora}`;
+
+                document.getElementById("lista").appendChild(item);
+
+                alert(
+                    `Entrevista cadastrada!\n\nVaga: ${vaga}\nData: ${data}\nHorário: ${hora}`
+                );
+
+                document.getElementById("vaga").value = "";
+                document.getElementById("dataEntrevista").value = "";
+                document.getElementById("horaEntrevista").value = "";
+            }
+            else {
+                alert("Preencha todos os campos.");
+            }
+        }
+
+    </script>
+
+</body>
+</html>
