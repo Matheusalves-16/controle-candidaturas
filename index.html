@@ -2,77 +2,51 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Organiza Vagas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Candidaturas</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 30px;
-        }
-
-        input {
-            margin: 5px;
-            padding: 8px;
-        }
-
-        button {
-            padding: 8px 15px;
-            cursor: pointer;
-        }
-
-        li {
-            margin: 10px 0;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <h1>Controle de Candidaturas</h1>
+    <div class="container">
 
-    <input type="text" id="vaga" placeholder="Nome da vaga">
-    <input type="date" id="dataEntrevista">
-    <input type="time" id="horaEntrevista">
+        <h1>Controle de Candidaturas</h1>
 
-    <button onclick="adicionarVaga()">
-        Adicionar
-    </button>
+        <p>Total de candidaturas:
+            <span id="contador">0</span>
+        </p>
 
-    <ul id="lista"></ul>
+        <div class="formulario">
 
-    <script>
+            <input type="text" id="vaga" placeholder="Nome da vaga">
 
-        function adicionarVaga() {
+            <input type="text" id="empresa" placeholder="Empresa">
 
-            let vaga = document.getElementById("vaga").value;
-            let data = document.getElementById("dataEntrevista").value;
-            let hora = document.getElementById("horaEntrevista").value;
+            <input type="date" id="data">
 
-            if (vaga !== "" && data !== "" && hora !== "") {
+            <input type="time" id="hora">
 
-                let item = document.createElement("li");
+            <select id="status">
+                <option>Enviado</option>
+                <option>Em análise</option>
+                <option>Entrevista</option>
+                <option>Aprovado</option>
+                <option>Reprovado</option>
+            </select>
 
-                item.innerHTML =
-                    `<strong>${vaga}</strong><br>
-                     Data: ${data}<br>
-                     Horário: ${hora}`;
+            <button onclick="adicionarCandidatura()">
+                Adicionar
+            </button>
 
-                document.getElementById("lista").appendChild(item);
+        </div>
 
-                alert(
-                    `Entrevista cadastrada!\n\nVaga: ${vaga}\nData: ${data}\nHorário: ${hora}`
-                );
+        <ul id="lista"></ul>
 
-                document.getElementById("vaga").value = "";
-                document.getElementById("dataEntrevista").value = "";
-                document.getElementById("horaEntrevista").value = "";
-            }
-            else {
-                alert("Preencha todos os campos.");
-            }
-        }
+    </div>
 
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
